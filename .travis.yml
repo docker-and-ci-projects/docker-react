@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t adammorsi/frontend .
+
+scripts:
+  - docker run -e CI=true adammorsi/frontend yarn run test
